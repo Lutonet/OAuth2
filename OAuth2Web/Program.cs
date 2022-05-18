@@ -1,8 +1,13 @@
+using Serilog;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
+builder.Host.UseSerilog((ctx, lc) => lc
+    .WriteTo.Console());
+//.WriteTo.Seq("http://localhost:5341")); ;
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -21,5 +26,6 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();
