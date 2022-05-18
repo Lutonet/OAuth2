@@ -3,7 +3,33 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32505.426
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2Web", "OAuth2Web\OAuth2Web.csproj", "{5766B22C-E117-482C-9112-740CBD5E9D24}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "OAuth2Data", "OAuth2Data\OAuth2Data.sqlproj", "{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2DataAccess", "OAuth2DataAccess\OAuth2DataAccess.csproj", "{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5766B22C-E117-482C-9112-740CBD5E9D24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5766B22C-E117-482C-9112-740CBD5E9D24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5766B22C-E117-482C-9112-740CBD5E9D24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5766B22C-E117-482C-9112-740CBD5E9D24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{859FDAF9-38AD-48E9-B538-3C1FC43A77FD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
