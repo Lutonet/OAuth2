@@ -58,6 +58,9 @@
     <Folder Include="Properties" />
     <Folder Include="dbo" />
     <Folder Include="PublishLocations" />
+    <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Tables" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <Import Condition="'$(NetCoreBuild)' == 'true'" Project="$(NETCoreTargetsPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
@@ -65,6 +68,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="PublishLocations\OAuth2Data.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Users.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\UserClaims.sql" />
+    <Build Include="dbo\Tables\UserLogins.sql" />
+    <Build Include="dbo\Tables\UsersRoles.sql" />
+    <Build Include="dbo\Tables\Applications.sql" />
   </ItemGroup>
   <Target Name="BeforeBuild">
     <Delete Files="$(BaseIntermediateOutputPath)\project.assets.json" />
