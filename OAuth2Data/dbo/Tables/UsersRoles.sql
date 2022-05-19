@@ -8,9 +8,6 @@
 )
 
 GO
-
 CREATE INDEX [IX_Users_Roles_UserId] ON [dbo].[UsersRoles] (UserId)
-
 GO
-
 CREATE INDEX [IX_Users_Roles_RoleId] ON [dbo].[UsersRoles] (RoleId)
