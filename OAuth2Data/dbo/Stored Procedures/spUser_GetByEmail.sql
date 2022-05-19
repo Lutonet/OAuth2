@@ -9,7 +9,7 @@ BEGIN
          [PhoneNumberConfirmed], 
          [TwoFactorEnabled], 
          [LockoutEnabled], 
-         [LockoutEndDateUtd], 
+         [LockoutEndDateUtc], 
          [FirstName], 
          [LastName], 
          [PublicName], 
