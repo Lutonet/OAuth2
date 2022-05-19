@@ -1,6 +1,6 @@
 ﻿CREATE TABLE [dbo].[Applications]
 (
-  [Id] NVARCHAR(128) NOT NULL PRIMARY KEY, 
+  [Id] NVARCHAR(128) NOT NULL PRIMARY KEY DEFAULT NEWID(), 
     [UserId] NVARCHAR(128) NOT NULL, 
     [Name] NVARCHAR(128) NOT NULL, 
     [Description] NVARCHAR(MAX) NULL, 
@@ -12,7 +12,8 @@
     [ReturnUrl] NVARCHAR(256) NOT NULL, 
     [IsActive] BIT NOT NULL DEFAULT 0, 
     [IsLocked] BIT NOT NULL DEFAULT 0, 
-    [TermsURL] NVARCHAR(256) NULL, 
+    [TermsUrl] NVARCHAR(256) NULL, 
+    [ReturnUrl] NVARCHAR(256) NULL, 
     CONSTRAINT [FK_Applications_Users] FOREIGN KEY (UserId) REFERENCES [Users]([Id]), 
 
 )

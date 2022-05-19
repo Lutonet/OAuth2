@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="ce8dc827-6c25-4147-afde-e2c6bf614709" ChangeDateTime="05/19/2022 21:39:57">
+    <Property Name="ElementName" Value="[dbo].[Users].[LockoutEndDateUtd]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="LockoutEndDateUtc" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="27fc17f7-8242-4203-a7bf-1132387ea337" ChangeDateTime="05/19/2022 21:48:06">
+    <Property Name="ElementName" Value="[dbo].[Applications].[TermsURL]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Applications]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="TermsUrl" />
+  </Operation>
+</Operations>

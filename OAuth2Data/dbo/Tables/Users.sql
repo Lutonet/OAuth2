@@ -8,7 +8,7 @@
     [PhoneNumberConfirmed] BIT NOT NULL DEFAULT 0, 
     [TwoFactorEnabled] BIT NOT NULL DEFAULT 0, 
     [LockoutEnabled] BIT NOT NULL DEFAULT 1, 
-    [LockoutEndDateUtd] DATETIME2 NULL, 
+    [LockoutEndDateUtc] DATETIME2 NULL, 
     [AccessFailedCount] INT NOT NULL DEFAULT 0, 
     [FirstName] NVARCHAR(50) NOT NULL, 
     [LastName] NVARCHAR(50) NOT NULL, 
