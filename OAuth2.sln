@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OAuth2I18n", "OAuth2I18n\OAuth2I18n.csproj", "{F17F8AE2-EE55-476E-88FF-C23C09599DAD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EBDC6ACB-E75A-4416-ABA1-F6D163DF62DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F17F8AE2-EE55-476E-88FF-C23C09599DAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17F8AE2-EE55-476E-88FF-C23C09599DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17F8AE2-EE55-476E-88FF-C23C09599DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17F8AE2-EE55-476E-88FF-C23C09599DAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

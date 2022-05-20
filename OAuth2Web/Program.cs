@@ -1,6 +1,7 @@
 using Serilog;
 using Serilog.Configuration;
 using Microsoft.OpenApi.Models;
+using OAuth2I18n.Middlewares;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 
@@ -8,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<I18nMiddleware>();
+builder.Services.AddDistributedMemoryCache();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {

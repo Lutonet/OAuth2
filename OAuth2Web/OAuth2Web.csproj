@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>7363fe23-de92-464a-adb1-bbad7f7b40a6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
@@ -21,12 +21,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OAuth2DataAccess\OAuth2DataAccess.csproj" />
+    <ProjectReference Include="..\OAuth2I18n\OAuth2I18n.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Api\" />
     <Folder Include="Helpers\" />
+    <Folder Include="Docs\" />
     <Folder Include="SignalR\" />
     <Folder Include="Services\" />
   </ItemGroup>
