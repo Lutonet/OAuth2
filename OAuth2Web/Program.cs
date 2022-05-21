@@ -10,6 +10,8 @@ Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 var builder = WebApplication.CreateBuilder(args);
 I18nConfigurationModel I18nSettings = await new I18nSettingsController().Load();
 // Add services to the container.
+builder.Services.AddMvcCore()
+    .AddApiExplorer();
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<I18nMiddleware>();
 builder.Services.AddDistributedMemoryCache();
@@ -55,16 +57,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 app.UseMiddleware<I18nMiddleware>();
+
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
 app.UseAuthorization();
+app.UseStaticFiles();
 app.UseSwagger();
 app.UseSwaggerUI();
-app.MapRazorPages();
+app.UseRouting();
 app.MapControllers();
+app.MapRazorPages();
 
 app.Run();
