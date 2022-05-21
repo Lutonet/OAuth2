@@ -1,4 +1,6 @@
-﻿using OAuth2I18n.Models;
+﻿using Newtonsoft.Json;
+using OAuth2I18n.Defaults;
+using OAuth2I18n.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,10 +28,28 @@ namespace OAuth2I18n.Services
             {
                 await CreateDeaultConfigurationFile();
             }
+            try
+            {
+                string json = await File.ReadAllTextAsync(settingsFile);
+                return JsonConvert.DeserializeObject<I18nConfigurationModel>(json);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task Save(I18nConfigurationModel settings)
         {
+            try
+            {
+                string settingsJson = JsonConvert.SerializeObject(settings);
+                await File.WriteAllTextAsync(settingsFile, settingsJson);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         private bool ConfigurationFileExists()
@@ -39,11 +59,17 @@ namespace OAuth2I18n.Services
 
         private async Task CreateDeaultConfigurationFile()
         {
-            I18nConfigurationModel settings = new I18nConfigurationModel();
-            settings.DefaultLaungauge="en";
-            settings.LanguagesSupported=LibreLanguages;
+            I18nConfigurationModel settings = new DefaultSettings().GetDefaultConfiguration();
+            string settingsJson = JsonConvert.SerializeObject(settings);
+            try
+            {
+                await File.WriteAllTextAsync(settingsFile, settingsJson);
+                return;
+            }
+            catch
+            {
+                throw;
+            }
         }
-
-        private List<LanguageModel> LibreLanguages = new List<LanguageModel>();
     }
 }

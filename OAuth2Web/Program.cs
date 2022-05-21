@@ -2,16 +2,19 @@ using Serilog;
 using Serilog.Configuration;
 using Microsoft.OpenApi.Models;
 using OAuth2I18n.Middlewares;
+using OAuth2I18n.Services;
+using OAuth2I18n.Models;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 
 var builder = WebApplication.CreateBuilder(args);
-
+I18nConfigurationModel I18nSettings = await new I18nSettingsController().Load();
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddSingleton<I18nMiddleware>();
 builder.Services.AddDistributedMemoryCache();
-
+builder.Services.AddLogging();
+builder.Services.AddSingleton(I18nSettings);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -51,6 +54,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+app.UseMiddleware<I18nMiddleware>();
 app.UseSerilogRequestLogging();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
