@@ -4,6 +4,9 @@ using Microsoft.OpenApi.Models;
 using OAuth2I18n.Middlewares;
 using OAuth2I18n.Services;
 using OAuth2I18n.Models;
+using OAuth2DataAccess.DataAccess;
+using OAuth2Identity.Controlers;
+using OAuth2DataAccess.SQLAccess;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 
@@ -18,6 +21,10 @@ builder.Services.AddDistributedMemoryCache();
 builder.Services.AddLogging();
 builder.Services.AddSingleton(I18nSettings);
 builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddTransient<ISQLDataAccess, SQLDataAccess>();
+builder.Services.AddTransient<IUserData, UserData>();
+builder.Services.AddTransient<IPasswordTools, PasswordTools>();
+builder.Services.AddTransient<IEncrypt, Encrypt>();
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new OpenApiInfo

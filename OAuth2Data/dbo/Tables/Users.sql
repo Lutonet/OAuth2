@@ -25,6 +25,7 @@
     [AccountLocked] DATETIME2 NOT NULL, 
     [LockedReason] NVARCHAR(MAX) NOT NULL, 
     [LockedByAdminId] NVARCHAR(128) NULL, 
+    
     CONSTRAINT [PK_Users] PRIMARY KEY ([Id]), 
     CONSTRAINT [FK_Users_ToUsers] FOREIGN KEY (LockedByAdminId) REFERENCES [Users]([Id])
 )

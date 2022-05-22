@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OAuth2DataAccess.DataAccess
 {
-    public class UserData
+    public class UserData : IUserData
     {
         private readonly ISQLDataAccess _db;
 

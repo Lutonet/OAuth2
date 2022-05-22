@@ -1,19 +1,9 @@
-﻿using DataAnnotationsExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OAuth2Identity.Models
+﻿namespace OAuth2Identity.Models
 {
     public class IdentityUser
     {
         public string Id { get; set; }
-
-        [Email]
         public string Email { get; set; }
-
         public bool EmailConfirmed { get; set; }
         public string PasswordHash { get; set; }
         public string PhoneNumber { get; set; }

@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controlers\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DataAnnotationsExtensions" Version="5.0.1.27" />
+    <PackageReference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation" Version="6.0.5" />
   </ItemGroup>
 
 </Project>
