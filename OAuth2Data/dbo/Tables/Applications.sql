@@ -13,6 +13,8 @@
     [IsActive] BIT NOT NULL DEFAULT 0, 
     [IsLocked] BIT NOT NULL DEFAULT 0, 
     [TermsUrl] NVARCHAR(256) NULL, 
+    [AgeFrom] INT NOT NULL DEFAULT 0, 
+    [UserHasAgeLimit] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [FK_Applications_Users] FOREIGN KEY (UserId) REFERENCES [Users]([Id]), 
 
 )

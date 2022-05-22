@@ -20,5 +20,7 @@ namespace OAuth2DataAccess.Models
         public bool IsLocked { get; set; }
         public string TermsUrl { get; set; }
         public string ReturnUrl { get; set; }
+        public bool HasUserAgeLimits { get; set; }
+        public int AgeFrom { get; set; }
     }
 }
