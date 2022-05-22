@@ -18,6 +18,7 @@ namespace OAuth2I18n.Services
          *  Save Settings,
          *  Monitor File Size
          */
+
         private static readonly string programDirectory = Directory.GetCurrentDirectory();
         private readonly string settingsFile = Path.Combine(programDirectory, "i18n.json");
 

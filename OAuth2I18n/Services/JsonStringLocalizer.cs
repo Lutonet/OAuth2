@@ -44,11 +44,11 @@ namespace OAuth2I18n.Services
 
         public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
         {
-            string filePath = Path.Combine("I18n", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower()+".json");
+            string filePath = Path.Combine(_config.TranslationsLocation, Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower()+".json");
 
             if (!File.Exists(filePath))
             {
-                filePath = Path.Combine("I18n", "en.json");
+                filePath = Path.Combine(_config.TranslationsLocation, "en.json");
                 if (!File.Exists(filePath)) throw new FileNotFoundException(filePath);
             }
             using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
@@ -69,11 +69,11 @@ namespace OAuth2I18n.Services
 
         private string GetString(string key)
         {
-            string filePath = Path.Combine("I18n", Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower()+".json");
+            string filePath = Path.Combine(_config.TranslationsLocation, Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower()+".json");
 
             if (!File.Exists(filePath))
             {
-                filePath = Path.Combine("I18n", "en.json");
+                filePath = Path.Combine(_config.TranslationsLocation, "en.json");
             }
             string cacheKey = $"locale_{Thread.CurrentThread.CurrentCulture.Name}_{key}";
             string cacheValue = _cache.GetString(cacheKey);

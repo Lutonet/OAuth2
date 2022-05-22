@@ -44,7 +44,7 @@ namespace OAuth2I18n.Defaults
 
             DefaultConfiguration.LanguagesSupported = LibreLanguages;
             DefaultConfiguration.DefaultLaungauge = "en";
-            DefaultConfiguration.JsonLocation = Directory.GetCurrentDirectory();
+            DefaultConfiguration.TranslationsLocation = Directory.GetCurrentDirectory();
 
             return DefaultConfiguration;
         }

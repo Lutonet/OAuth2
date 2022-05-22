@@ -25,10 +25,10 @@
   <ItemGroup>
     <ProjectReference Include="..\OAuth2DataAccess\OAuth2DataAccess.csproj" />
     <ProjectReference Include="..\OAuth2I18n\OAuth2I18n.csproj" />
+    <ProjectReference Include="..\OAuth2Identity\OAuth2Identity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Helpers\" />
     <Folder Include="Docs\" />
     <Folder Include="SignalR\" />
