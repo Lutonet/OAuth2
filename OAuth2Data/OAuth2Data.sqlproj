@@ -81,6 +81,7 @@
     <Build Include="dbo\Stored Procedures\spUser_GetById.sql" />
     <Build Include="dbo\Stored Procedures\spUser_GetByEmail.sql" />
     <Build Include="dbo\Stored Procedures\spUser_Insert.sql" />
+    <Build Include="dbo\Tables\UserTokens.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OAuth2Data.refactorlog" />
