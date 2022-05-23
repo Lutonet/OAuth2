@@ -18,7 +18,7 @@ namespace OAuth2Web.Api
 
         // GET: api/<Language>
         [HttpGet]
-        public ActionResult Get()
+        public ActionResult<List<LanguageModel>> Get()
         {
             try
             {

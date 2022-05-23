@@ -38,7 +38,7 @@ namespace OAuth2Identity.Services
             return false;
         }
 
-        public async Task<string> Register(RegisterModel register)
+        public async Task<string> Register(IdentityUser register)
         {
             return null;
         }
