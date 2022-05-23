@@ -42,6 +42,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<ISQLDataAccess, SQLDataAccess>();
 builder.Services.AddTransient<IUserData, UserData>();
+builder.Services.AddTransient<IChecksData, ChecksData>();
 builder.Services.AddTransient<IPasswordTools, PasswordTools>();
 builder.Services.AddTransient<IEncrypt, Encrypt>();
 
@@ -63,6 +64,7 @@ app.UseSwagger(c =>
 {
     c.SerializeAsV2 = true;
 });
+
 app.UseSwaggerUI();
 app.UseStaticFiles();
 app.UseRouting();

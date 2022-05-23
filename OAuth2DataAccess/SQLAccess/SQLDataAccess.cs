@@ -33,7 +33,7 @@ public class SQLDataAccess : ISQLDataAccess
                                                 string connectionId = "SQLServer")
     {
         using IDbConnection connection = new SqlConnection(_config.GetConnectionString(connectionId));
-        return await connection.QueryFirstOrDefaultAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+        return (await connection.QueryFirstOrDefaultAsync<T>(storedProcedure, parameters, commandType: CommandType.StoredProcedure));
     }
 
     public async Task SaveData<T>(

@@ -1,4 +1,5 @@
 ﻿using OAuth2DataAccess.DataAccess;
+using OAuth2DataAccess.Models;
 using OAuth2Identity.Controlers;
 using OAuth2Identity.Models;
 using System;
@@ -38,7 +39,7 @@ namespace OAuth2Identity.Services
             return false;
         }
 
-        public async Task<string> Register(IdentityUser register)
+        public async Task<UserPublicModel> Register(IdentityUser register)
         {
             return null;
         }
