@@ -13,12 +13,15 @@ using Swashbuckle.AspNetCore.Swagger;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using OAuth2DataAccess.Models;
 using System.Reflection;
+using OAuth2Web.Models;
+using OAuth2Identity.Models;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 
 var config = new MapperConfiguration(cfg =>
 {
     cfg.CreateMap<UserModel, UserPublicModel>();
+    cfg.CreateMap<RegisterModel, IdentityUser>();
 });
 
 var mapper = config.CreateMapper();
