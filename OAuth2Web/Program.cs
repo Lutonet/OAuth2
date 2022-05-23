@@ -7,15 +7,27 @@ using OAuth2I18n.Models;
 using OAuth2DataAccess.DataAccess;
 using OAuth2Identity.Controlers;
 using OAuth2DataAccess.SQLAccess;
+using AutoMapper;
+
+using OAuth2DataAccess.Models;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
+
+var config = new MapperConfiguration(cfg =>
+{
+    cfg.CreateMap<UserModel, UserPublicModel>();
+});
+
+var output = config.CreateMapper();
 
 var builder = WebApplication.CreateBuilder(args);
 I18nConfigurationModel I18nSettings = await new I18nSettingsController().Load();
 // Add services to the container.
 builder.Services.AddMvcCore()
     .AddApiExplorer();
+builder.Services.AddSingleton(output);
 builder.Services.AddRazorPages();
+
 builder.Services.AddSingleton<I18nMiddleware>();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddLogging();
