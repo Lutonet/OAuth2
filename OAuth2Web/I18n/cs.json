@@ -1,0 +1,7 @@
+{
+  "Test": "Phrase for testing",
+  "Test2": "Another phrase for testing",
+  "AdminRegistration": "Registrace administrátora",
+  "CreateSystemAdminHeader": "Vytvořit účet systémového administrátora",
+  "CreateSystemAdminBodyText": "Zadejte prosím platný email a zvolte bezpečné heslo.\nHeslo musí obsahovat alespoň jednu číslici, jedno velké písmeno a musí být alespoň 8 znaků dlouhé."
+}

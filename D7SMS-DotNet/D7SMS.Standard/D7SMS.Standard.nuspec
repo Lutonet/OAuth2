@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ - D7SMS.Standard
+ -
+-->
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>D7SMS.Standard</id>
+    <version>1.0.0</version>
+    <title>D7SMS.Standard</title>
+    <authors>Emanuel</authors>
+    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>D7 SMS allows you to reach your customers via SMS over D7's own connectivity to global mobile networks. D7 provides reliable and cost-effective SMS services to businesses across all industries and aims to connect all countries and territories via direct connections.</description>
+    <summary />
+    <releaseNotes />
+    <copyright>Copyright 2016</copyright>
+    <language>en-US</language>
+        <dependencies>
+        </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\D7SMS.Standard.dll" target="lib\D7SMS.Standard.dll" />
+  </files>
+</package>

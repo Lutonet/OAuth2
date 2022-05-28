@@ -1,4 +1,7 @@
 {
   "Test": "Phrase for testing",
-  "Test2": "Another phrase for testing"
+  "Test2": "Another phrase for testing",
+  "AdminRegistration": "Admin registration",
+  "CreateSystemAdminHeader": "Create a system administrator account",
+  "CreateSystemAdminBodyText": "Please use a valid email and make sure to choose a secure password.\n Password must include one number, one capital letter and must be at least 8 characters long."
 }

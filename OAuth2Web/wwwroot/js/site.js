@@ -1,4 +1,10 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿async function getHelp(help = "", element = document.getElementById("helper")) {
+    const response = await fetch("/Helpers/" + help, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'text/html'
+        }
+    });
+   
+    return response.text();
+}

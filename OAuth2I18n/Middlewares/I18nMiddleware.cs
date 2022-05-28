@@ -22,6 +22,12 @@ namespace OAuth2I18n.Middlewares
                     Thread.CurrentThread.CurrentUICulture = culture;
                 }
             }
+            else
+            {
+                var culture = new CultureInfo("en-US");
+                Thread.CurrentThread.CurrentCulture = culture;
+                Thread.CurrentThread.CurrentUICulture = culture;
+            }
 
             await next(context);
         }

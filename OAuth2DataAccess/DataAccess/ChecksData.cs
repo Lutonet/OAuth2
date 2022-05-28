@@ -22,5 +22,11 @@ namespace OAuth2DataAccess.DataAccess
             if (result == 0) return true;
             return false;
         }
+
+        public async Task<bool> EmailAlreadyRegistered(string email)
+        {
+            int result = await _sql.LoadSingleRecord<int, dynamic>("spUser_Exists", new { Email = email });
+            return result == 0 ? false : true;
+        }
     }
 }

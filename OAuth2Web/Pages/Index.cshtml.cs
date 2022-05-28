@@ -9,7 +9,6 @@ namespace OAuth2Web.Pages
     {
         private readonly ILogger<IndexModel> _logger;
         private readonly IChecksData _checker;
-        public bool NeedsInstall { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger, IChecksData checker)
         {

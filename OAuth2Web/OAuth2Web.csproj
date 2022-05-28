@@ -29,13 +29,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\D7SMS-DotNet\D7SMS.Standard\D7SMS.Standard.csproj" />
     <ProjectReference Include="..\OAuth2DataAccess\OAuth2DataAccess.csproj" />
     <ProjectReference Include="..\OAuth2I18n\OAuth2I18n.csproj" />
     <ProjectReference Include="..\OAuth2Identity\OAuth2Identity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Helpers\" />
     <Folder Include="Docs\" />
     <Folder Include="SignalR\" />
     <Folder Include="Services\" />

@@ -1,0 +1,16 @@
+{
+  "UseEmailConfirmation": false,
+  "UsePhoneConfirmation": false,
+  "UsePasswordRules": true,
+  "PasswordRules": {
+    "MinimalLength": 8,
+    "MustIncludeSmall": true,
+    "IncludeCapital": true,
+    "IncludeNumber": true,
+    "IncludeSpecialCharacter": false
+  },
+  "CodeRules": {
+    "Length": 6,
+    "CodeValidMinutes": 15
+  }
+}

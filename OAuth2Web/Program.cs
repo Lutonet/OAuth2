@@ -15,6 +15,10 @@ using OAuth2DataAccess.Models;
 using System.Reflection;
 using OAuth2Web.Models;
 using OAuth2Identity.Models;
+using OAuth2Identity;
+using Microsoft.Extensions.Localization;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 
@@ -28,14 +32,18 @@ var mapper = config.CreateMapper();
 
 var builder = WebApplication.CreateBuilder(args);
 I18nConfigurationModel I18nSettings = await new I18nSettingsController().Load();
+IdentityConfiguration IdentityConfiguration = await new IdentitySettingsController().Load();
 builder.Host.UseSerilog((ctx, lc) => lc
     .ReadFrom.Configuration(ctx.Configuration));
 // Add services to the container.
 builder.Services.AddLogging();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddLocalization();
 builder.Services.AddSingleton(I18nSettings);
+builder.Services.AddSingleton(IdentityConfiguration);
 builder.Services.AddSingleton<I18nMiddleware>();
+builder.Services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -55,6 +63,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 }
 app.UseHsts();
+
+app.UseRequestLocalization();
 app.UseMiddleware<I18nMiddleware>();
 
 app.UseSerilogRequestLogging();
@@ -64,7 +74,6 @@ app.UseSwagger(c =>
 {
     c.SerializeAsV2 = true;
 });
-
 app.UseSwaggerUI();
 app.UseStaticFiles();
 app.UseRouting();

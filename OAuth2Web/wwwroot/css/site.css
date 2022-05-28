@@ -1,18 +1,34 @@
-html {
-  font-size: 14px;
-}
-
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
+
+
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
+    background-color: #333333;
+    color: #dddddd;
+    font-size: 14px;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #333333;
+    color: #dddddd;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+.content {
+    padding: 20px;
+    margin-top:-15px;
+    border-left: 1px solid #aaaaaa;
+    outline: 0px;
+    border-right: 1px solid #aaaaaa;
 }

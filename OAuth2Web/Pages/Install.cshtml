@@ -2,4 +2,18 @@
 @model OAuth2Web.Pages.InstallModel
 @{
 }
-Install
+<div>
+    <div>
+        <h1>@Model._loc["AdminRegistration"]</h1>
+    </div>
+    <div class="helper" id="helper">
+
+    </div>
+</div>
+<script language="javascript">
+getHelp('CreateSystemAdmin', 'helper')
+    .then(data => {
+    console.log(data);
+   
+    })
+</script>
