@@ -19,6 +19,7 @@ using OAuth2Identity;
 using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using OAuth2Web.Helpers;
 
 Log.Logger = new LoggerConfiguration().CreateBootstrapLogger();
 
@@ -49,6 +50,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRazorPages();
 builder.Services.AddTransient<ISQLDataAccess, SQLDataAccess>();
+builder.Services.AddTransient<IUserHelpers, UserHelpers>();
 builder.Services.AddTransient<IUserData, UserData>();
 builder.Services.AddTransient<IChecksData, ChecksData>();
 builder.Services.AddTransient<IPasswordTools, PasswordTools>();

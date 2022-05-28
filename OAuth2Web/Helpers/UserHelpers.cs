@@ -2,9 +2,19 @@
 
 namespace OAuth2Web.Helpers
 {
-    internal class UserHelpers
+    public class UserHelpers : IUserHelpers
     {
-        public static List<HelperModel> Helpers = new List<HelperModel>();
+        public UserHelpers()
+        {
+            Helpers.Add(AdminHelp);
+        }
+
+        public List<HelperModel> Helpers = new List<HelperModel>();
+
+        public HelperModel GetHelp(string name)
+        {
+            return Helpers.FirstOrDefault(x => x.Name == name);
+        }
 
         private HelperModel AdminHelp = new HelperModel()
         {
