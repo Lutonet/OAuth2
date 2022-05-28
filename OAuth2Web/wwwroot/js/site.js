@@ -7,7 +7,15 @@
             }
         });
 
-        return response.text();
+        let res = await response.text();
+        let obj = JSON.parse(res);
+        console.log(obj);
+        element.innerHTML = `<h5 class="helper_header">${obj.header}</h5>`;
+        let arr = obj.bodyText.split("\n");
+        arr.map((div) => element.innerHTML += `<div class="help-body">${div}</div`);
+      
+
+       
     }
     catch (err) {
         return err;
