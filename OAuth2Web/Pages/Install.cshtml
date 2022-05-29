@@ -6,10 +6,22 @@
     <div>
         <h1>@Model._loc["AdminRegistration"]</h1>
     </div>
-    <div class="helper" id="helper">
-
+    <div class="helper" id="helper"></div>
+    <div class="helper" id="form">
+        <form>
+            <div>Error:</div>
+            <div>
+                <div><input type="text" class="helper_body form-control" placeholder="@Model._loc["email"]"name="email" accept="email" /></div>
+            </div>
+            <div>Error</div>
+            <div>
+               
+                <div><input class="helper_body form-control" placeholder="@Model._loc["password"]" type="password"  name="password" accept="email" /></div>
+            </div>
+        </form>
     </div>
 </div>
+
 <script language="javascript">
 getHelp('CreateSystemAdmin', document.getElementById('helper'));
     
