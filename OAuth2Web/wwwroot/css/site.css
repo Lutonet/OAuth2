@@ -24,6 +24,31 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
+input[type="text"],input[type="password"], button[type=submit] {
+    outline: none;
+    border: 1px solid #aaaaaa;
+    color: #cccccc;
+    background-color: #222222;
+}
+
+    input[type="text"]:focus {
+        outline: none;
+        border: 2px solid gray;
+        background-color: #222222;
+        color: white;
+    }
+
+    input[type="text"]:active {
+        outline: none;
+        border: 2px solid gray;
+        background-color: #222222;
+        color: white;
+    }
+
+button[type=submit]:hover {
+    color: aqua;
+}
+
 .content {
     padding: 20px;
     margin-top: -15px;
@@ -70,6 +95,13 @@ h1, h2, h3, h4, h5, h6 {
     outline: 0px;
     border-radius: 5px;
 }
+
 .form-control {
     width: calc(100% - 15px);
+}
+
+.right {
+    text-align: right;
+    margin-right: 5px;
+    border-radius: 10px;
 }

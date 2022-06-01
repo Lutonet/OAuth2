@@ -8,15 +8,20 @@
     </div>
     <div class="helper" id="helper"></div>
     <div class="helper" id="form">
-        <form>
-            <div>Error:</div>
+        <form method="post">
+
             <div>
-                <div><input type="text" class="helper_body form-control" placeholder="@Model._loc["email"]"name="email" accept="email" /></div>
+                <div><input onkeyup="checkform()" id="email" type="text" class="helper_body text-light form-control" placeholder="@Model._loc["email"]" name="email" accept="email" /></div>
             </div>
-            <div>Error</div>
             <div>
-               
-                <div><input class="helper_body form-control" placeholder="@Model._loc["password"]" type="password"  name="password" accept="email" /></div>
+                <div><input onkeyup="checkform()" id="password" class="helper_body text-light form-control" placeholder="@Model._loc["password"]" type="password"  name="password" accept="email" /></div>
+            </div>
+            <div class="right">
+                <button type="submit" 
+                    name="register" 
+                    id="btn-register" 
+                    disabled 
+                    class="btn button justify-content-center">@Model._loc["registerAdmin"]</button>
             </div>
         </form>
     </div>
@@ -24,5 +29,14 @@
 
 <script language="javascript">
 getHelp('CreateSystemAdmin', document.getElementById('helper'));
-    
+
+const checkform = () => {
+    const btn = document.getElementById('btn-register');
+    if (ValidateEmail(document.getElementById('email').value) && ValidatePassword(document.getElementById('password').value)) {
+        btn.disabled = false;
+    }
+    else {
+        btn.disabled = true;
+    }
+}
 </script>

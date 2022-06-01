@@ -16,6 +16,17 @@ namespace OAuth2Web.Pages
             _loc = loc;
         }
 
+        public async Task<ActionResult> OnPostAsync()
+        {
+            string email = Request.Form["email"];
+            string password = Request.Form["password"];
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                return Page();
+            }
+            return Page();
+        }
+
         public async Task<ActionResult> OnGetAsync()
         {
             bool needsInstall = await _checker.NeedsInstall();
