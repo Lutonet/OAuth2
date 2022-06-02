@@ -9,6 +9,8 @@ namespace OAuth2Identity.Services
 
         bool CheckPassword(string password);
 
+        Task CreateServerAdmin(string email, string password);
+
         Task<string> GetUserEmailById(string Id);
 
         Task<string> GetUserId(string email);

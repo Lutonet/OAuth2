@@ -9,11 +9,22 @@ namespace OAuth2Identity.Services
     {
         private IUserData _user;
         private IdentityConfiguration _configuration;
+        private IChecksData _checks;
 
-        public UserService(IUserData user, IdentityConfiguration configuration)
+        public UserService(IUserData user,
+            IdentityConfiguration configuration,
+            IChecksData checks)
         {
             _user = user;
             _configuration=configuration;
+            _checks = checks;
+        }
+
+        public async Task CreateServerAdmin(string email, string password)
+        {
+            if (!await _checks.NeedsInstall())
+                return;
+            else Console.WriteLine("All OK installing server administrator");
         }
 
         public async Task<string> GetUserEmailById(string Id)

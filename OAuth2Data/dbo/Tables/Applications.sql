@@ -4,7 +4,7 @@
     [UserId] NVARCHAR(128) NOT NULL, 
     [Name] NVARCHAR(128) NOT NULL, 
     [Description] NVARCHAR(MAX) NULL, 
-    [DateCreated] DATETIME2 NOT NULL, 
+    [DateCreated] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 
     [HomeUrl] NVARCHAR(256) NULL, 
     [LockedUntil] DATETIME2 NULL, 
     [LogoUrl] NVARCHAR(256) NULL, 

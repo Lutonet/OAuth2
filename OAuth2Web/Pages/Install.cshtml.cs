@@ -28,6 +28,7 @@ namespace OAuth2Web.Pages
             if (await _userService.CheckEmail(email) || _userService.CheckPassword(password))
             {
                 Console.WriteLine("All good");
+                await _userService.CreateServerAdmin(email, password);
                 return Page();
             }
             return Page();

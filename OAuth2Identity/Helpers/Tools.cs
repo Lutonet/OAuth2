@@ -26,5 +26,7 @@
 
         public static string GenerateKey => GenerateRandomString(32);
         public static string GenerateRecoveryCode => GenerateRandomString(6);
+
+        public static string[] DefaultRoles = { "User", "Administrator", "Server Administrator" };
     }
 }
