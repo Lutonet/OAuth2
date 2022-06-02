@@ -16,7 +16,10 @@ namespace OAuth2DataAccess.Models
         public string LastName { get; set; } = "Administrator";
         public string PublicName { get; set; } = "Lord of the server";
         public bool IsDeveloper { get; set; } = true;
+
+        // Application Table
         public string Name { get; set; } = "Authenticator";
+
         public string Description { get; set; } = "Authenticator application";
         public bool IsActive { get; set; } = true;
     }

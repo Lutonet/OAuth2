@@ -3,6 +3,7 @@
 @Email NVARCHAR(128),
 @PhoneNumber NVARCHAR(24),
 @FirstName NVARCHAR(50),
+@PasswordHash VARCHAR(256),
 @LastName NVARCHAR(50),
 @PublicName NVARCHAR(256),
 @DateOfBirth DATETIME2,
