@@ -1,8 +1,6 @@
-﻿using System.Reactive.Concurrency;
-using ReactiveUI;
+﻿using ReactiveUI;
+using System.Reactive.Concurrency;
 using Terminal.Gui;
-using OAuth2ClientTerminal.ViewModels;
-using OAuth2ClientTerminal.Views;
 
 namespace OAuth2ClientTerminal;
 

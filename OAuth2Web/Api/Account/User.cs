@@ -1,9 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Mvc;
 using OAuth2DataAccess.Models;
-using OAuth2Identity.Models;
-using OAuth2Web.Models;
 
 namespace OAuth2Web.Api.Account
 {

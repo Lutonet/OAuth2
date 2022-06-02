@@ -2,10 +2,11 @@
  * D7SMS.Standard
  *
  */
+
+using D7SMS.Standard.Http.Client;
+using Newtonsoft.Json;
 using System;
 using System.IO;
-using Newtonsoft.Json;
-using D7SMS.Standard.Http.Client;
 
 namespace D7SMS.Standard.Exceptions
 {
@@ -49,7 +50,7 @@ namespace D7SMS.Standard.Exceptions
                 {
                     try { JsonConvert.PopulateObject(responseBody, this); }
                     catch
-                    {} //ignoring response body from deserailization
+                    { } //ignoring response body from deserailization
                 }
             }
         }

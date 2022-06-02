@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
 }
 
-input[type="text"],input[type="password"], button[type=submit] {
+input[type="text"], input[type="password"], button[type=submit] {
     outline: none;
     border: 1px solid #aaaaaa;
     color: #cccccc;
@@ -45,9 +45,9 @@ input[type="text"],input[type="password"], button[type=submit] {
         color: white;
     }
 
-button[type=submit]:hover {
-    color: aqua;
-}
+    button[type=submit]:hover {
+        color: aqua;
+    }
 
 .content {
     padding: 20px;

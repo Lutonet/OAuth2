@@ -4,7 +4,7 @@ using System.Net.Http;
 
 namespace D7SMS.Standard.Http.Request
 {
-  public class HttpRequest
+    public class HttpRequest
     {
         /// <summary>
         /// The HTTP verb to use for this request

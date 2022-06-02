@@ -1,11 +1,6 @@
 ﻿using AutoMapper;
 using OAuth2DataAccess.Models;
 using OAuth2DataAccess.SQLAccess;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OAuth2DataAccess.DataAccess
 {
@@ -16,8 +11,8 @@ namespace OAuth2DataAccess.DataAccess
 
         public UserData(ISQLDataAccess db, IMapper mapper)
         {
-            _db=db;
             _mapper = mapper;
+            _db=db;
         }
 
         public async Task<IEnumerable<UserModel>> GetUsers() =>
@@ -27,6 +22,13 @@ namespace OAuth2DataAccess.DataAccess
         {
             var response = await _db.LoadData<UserModel, dynamic>("dbo.spUser_GetById", new { Id = Id });
             return _mapper.Map<UserPublicModel>(response.FirstOrDefault());
+        }
+
+        public async Task<bool> IsEmailUnique(string email)
+        {
+            var response = await _db.LoadSingleRecord<int, dynamic>("dbo.spUser_EmailIsUnique", new { email = email });
+            if (response != 0) return false;
+            return true;
         }
     }
 }

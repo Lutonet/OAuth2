@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -14,7 +13,7 @@ namespace D7SMS.Standard.Http.Response
         /// <summary>
         /// Headers of the http response
         /// </summary>
-        public Dictionary<string,string> Headers { get; set; }
+        public Dictionary<string, string> Headers { get; set; }
 
         /// <summary>
         /// Stream of the body

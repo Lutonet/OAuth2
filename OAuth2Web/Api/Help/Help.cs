@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OAuth2Web.Helpers;
 using Microsoft.Extensions.Localization;
+using OAuth2Web.Helpers;
 using OAuth2Web.Models;
 
 namespace OAuth2Web.Api.Help

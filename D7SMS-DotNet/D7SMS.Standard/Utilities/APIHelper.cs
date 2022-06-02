@@ -2,19 +2,19 @@
  * D7SMS.Standard
  *
  */
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Linq;
 
 namespace D7SMS.Standard.Utilities
 {
@@ -209,11 +209,11 @@ namespace D7SMS.Standard.Utilities
             string parameters = index == -1 ? "" : url.Substring(index);
 
             //return process url
-            return string.Concat(protocol, query, parameters);;
+            return string.Concat(protocol, query, parameters); ;
         }
 
         /// <summary>
-        /// Used for flattening a collection of objects into a string 
+        /// Used for flattening a collection of objects into a string
         /// </summary>
         /// <param name="array">Array of elements to flatten</param>
         /// <param name="fmt">Format string to use for array flattening</param>
@@ -259,9 +259,9 @@ namespace D7SMS.Standard.Utilities
             if (null == element)
                 elemValue = string.Empty;
             else if (element is DateTime)
-                elemValue = ((DateTime) element).ToString(DateTimeFormat);
+                elemValue = ((DateTime)element).ToString(DateTimeFormat);
             else if (element is DateTimeOffset)
-                elemValue = ((DateTimeOffset) element).ToString(DateTimeFormat);
+                elemValue = ((DateTimeOffset)element).ToString(DateTimeFormat);
             else
                 elemValue = element.ToString();
 
@@ -281,7 +281,7 @@ namespace D7SMS.Standard.Utilities
             }
             else if (value is Stream)
             {
-                keys.Add(new KeyValuePair<string, object>(name,value));
+                keys.Add(new KeyValuePair<string, object>(name, value));
                 return keys;
             }
             else if (value is JObject)
@@ -292,12 +292,12 @@ namespace D7SMS.Standard.Utilities
                     string pKey = property.Name;
                     object pValue = property.Value;
                     var fullSubName = name + '[' + pKey + ']';
-                    PrepareFormFieldsFromObject(fullSubName, pValue, keys, propInfo,arrayDeserializationFormat);
+                    PrepareFormFieldsFromObject(fullSubName, pValue, keys, propInfo, arrayDeserializationFormat);
                 }
             }
             else if (value is IList)
             {
-                var enumerator = ((IEnumerable) value).GetEnumerator();
+                var enumerator = ((IEnumerable)value).GetEnumerator();
 
                 var hasNested = false;
                 while (enumerator.MoveNext())
@@ -319,10 +319,10 @@ namespace D7SMS.Standard.Utilities
                         fullSubName = name + "[]";
                     else if (!hasNested && arrayDeserializationFormat == ArrayDeserialization.Plain)
                         fullSubName = name;
-                    
+
                     var subValue = enumerator.Current;
                     if (subValue == null) continue;
-                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, propInfo,arrayDeserializationFormat);
+                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, propInfo, arrayDeserializationFormat);
                     i++;
                 }
             }
@@ -339,7 +339,7 @@ namespace D7SMS.Standard.Utilities
 #endif
                 string enumTypeName = value.GetType().FullName;
                 Type enumHelperType = thisAssembly.GetType(string.Format("{0}Helper", enumTypeName));
-                object enumValue = (int) value;
+                object enumValue = (int)value;
 
                 if (enumHelperType != null)
                 {
@@ -350,20 +350,20 @@ namespace D7SMS.Standard.Utilities
                     MethodInfo enumHelperMethod = enumHelperType.GetMethod("ToValue", new[] { value.GetType() });
 #endif
                     if (enumHelperMethod != null)
-                        enumValue = enumHelperMethod.Invoke(null, new object[] {value});
+                        enumValue = enumHelperMethod.Invoke(null, new object[] { value });
                 }
 
                 keys.Add(new KeyValuePair<string, object>(name, enumValue));
             }
             else if (value is IDictionary)
             {
-                var obj = (IDictionary) value;
+                var obj = (IDictionary)value;
                 foreach (var sName in obj.Keys)
                 {
                     var subName = sName.ToString();
                     var subValue = obj[subName];
                     string fullSubName = string.IsNullOrWhiteSpace(name) ? subName : name + '[' + subName + ']';
-                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, propInfo,arrayDeserializationFormat);
+                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, propInfo, arrayDeserializationFormat);
                 }
             }
             else if (!(value.GetType().Namespace.StartsWith("System")))
@@ -380,11 +380,11 @@ namespace D7SMS.Standard.Utilities
                 {
                     pInfo = enumerator.Current as PropertyInfo;
 
-                    var jsonProperty = (JsonPropertyAttribute) pInfo.GetCustomAttributes(t, true).FirstOrDefault();
+                    var jsonProperty = (JsonPropertyAttribute)pInfo.GetCustomAttributes(t, true).FirstOrDefault();
                     var subName = (jsonProperty != null) ? jsonProperty.PropertyName : pInfo.Name;
                     string fullSubName = string.IsNullOrWhiteSpace(name) ? subName : name + '[' + subName + ']';
                     var subValue = pInfo.GetValue(value, null);
-                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, pInfo,arrayDeserializationFormat);
+                    PrepareFormFieldsFromObject(fullSubName, subValue, keys, pInfo, arrayDeserializationFormat);
                 }
             }
             else if (value is DateTime)
@@ -395,7 +395,7 @@ namespace D7SMS.Standard.Utilities
 #else
                 object[] pInfo = null;
 #endif
-                if(propInfo!=null)
+                if (propInfo!=null)
                     pInfo = propInfo.GetCustomAttributes(true);
                 if (pInfo != null)
                 {
@@ -410,11 +410,11 @@ namespace D7SMS.Standard.Utilities
                                             converterAttr.ConverterParameters)).Replace("\"", "");
                     }
                 }
-                keys.Add(new KeyValuePair<string, object>(name, (convertedValue) ?? ((DateTime)value).ToString(DateTimeFormat))); 
+                keys.Add(new KeyValuePair<string, object>(name, (convertedValue) ?? ((DateTime)value).ToString(DateTimeFormat)));
             }
             else
             {
-                keys.Add(new KeyValuePair<string, object>(name,value));
+                keys.Add(new KeyValuePair<string, object>(name, value));
             }
             return keys;
         }

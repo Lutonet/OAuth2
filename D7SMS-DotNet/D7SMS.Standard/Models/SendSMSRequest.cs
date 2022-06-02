@@ -2,25 +2,16 @@
  * D7SMS.Standard
  *
  */
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using D7SMS.Standard;
-using D7SMS.Standard.Utilities;
 
+using Newtonsoft.Json;
 
 namespace D7SMS.Standard.Models
 {
-    public class SendSMSRequest : BaseModel 
+    public class SendSMSRequest : BaseModel
     {
         // These fields hold the values for the public properties.
         private long to;
+
         private string mfrom;
         private string content;
 
@@ -28,13 +19,13 @@ namespace D7SMS.Standard.Models
         /// Destination Mobile Number
         /// </summary>
         [JsonProperty("to")]
-        public long To 
-        { 
-            get 
+        public long To
+        {
+            get
             {
-                return this.to; 
-            } 
-            set 
+                return this.to;
+            }
+            set
             {
                 this.to = value;
                 onPropertyChanged("To");
@@ -45,13 +36,13 @@ namespace D7SMS.Standard.Models
         /// Sender ID / Number
         /// </summary>
         [JsonProperty("from")]
-        public string From 
-        { 
-            get 
+        public string From
+        {
+            get
             {
-                return this.mfrom; 
-            } 
-            set 
+                return this.mfrom;
+            }
+            set
             {
                 this.mfrom = value;
                 onPropertyChanged("From");
@@ -62,17 +53,17 @@ namespace D7SMS.Standard.Models
         /// Message Content
         /// </summary>
         [JsonProperty("content")]
-        public string Content 
-        { 
-            get 
+        public string Content
+        {
+            get
             {
-                return this.content; 
-            } 
-            set 
+                return this.content;
+            }
+            set
             {
                 this.content = value;
                 onPropertyChanged("Content");
             }
         }
     }
-} 
+}

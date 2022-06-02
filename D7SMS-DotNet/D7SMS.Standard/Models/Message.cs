@@ -2,25 +2,17 @@
  * D7SMS.Standard
  *
  */
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using D7SMS.Standard;
-using D7SMS.Standard.Utilities;
 
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace D7SMS.Standard.Models
 {
-    public class Message : BaseModel 
+    public class Message : BaseModel
     {
         // These fields hold the values for the public properties.
         private List<string> to;
+
         private string content;
         private string mfrom;
 
@@ -28,13 +20,13 @@ namespace D7SMS.Standard.Models
         /// Destination Number
         /// </summary>
         [JsonProperty("to")]
-        public List<string> To 
-        { 
-            get 
+        public List<string> To
+        {
+            get
             {
-                return this.to; 
-            } 
-            set 
+                return this.to;
+            }
+            set
             {
                 this.to = value;
                 onPropertyChanged("To");
@@ -45,13 +37,13 @@ namespace D7SMS.Standard.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("content")]
-        public string Content 
-        { 
-            get 
+        public string Content
+        {
+            get
             {
-                return this.content; 
-            } 
-            set 
+                return this.content;
+            }
+            set
             {
                 this.content = value;
                 onPropertyChanged("Content");
@@ -62,17 +54,17 @@ namespace D7SMS.Standard.Models
         /// TODO: Write general description for this method
         /// </summary>
         [JsonProperty("from")]
-        public string From 
-        { 
-            get 
+        public string From
+        {
+            get
             {
-                return this.mfrom; 
-            } 
-            set 
+                return this.mfrom;
+            }
+            set
             {
                 this.mfrom = value;
                 onPropertyChanged("From");
             }
         }
     }
-} 
+}

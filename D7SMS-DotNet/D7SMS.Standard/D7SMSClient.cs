@@ -2,16 +2,14 @@
  * D7SMS.Standard
  *
  */
-using System;
+
 using D7SMS.Standard.Controllers;
 using D7SMS.Standard.Http.Client;
-using D7SMS.Standard.Utilities;
 
 namespace D7SMS.Standard
 {
     public partial class D7SMSClient
     {
-
         /// <summary>
         /// Singleton access to Client controller
         /// </summary>
@@ -22,6 +20,7 @@ namespace D7SMS.Standard
                 return APIController.Instance;
             }
         }
+
         /// <summary>
         /// The shared http client to use for all API calls
         /// </summary>
@@ -34,13 +33,16 @@ namespace D7SMS.Standard
             set
             {
                 BaseController.ClientInstance = value;
-            }        
+            }
         }
+
         #region Constructors
+
         /// <summary>
         /// Default constructor
         /// </summary>
-        public D7SMSClient() { }
+        public D7SMSClient()
+        { }
 
         /// <summary>
         /// Client initialization constructor
@@ -50,6 +52,7 @@ namespace D7SMS.Standard
             Configuration.APIUsername = aPIUsername;
             Configuration.APIPassword = aPIPassword;
         }
-        #endregion
+
+        #endregion Constructors
     }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 
 namespace D7SMS.Standard.Http.Client
@@ -33,7 +32,7 @@ namespace D7SMS.Standard.Http.Client
         {
             FileStream = stream;
             FileName = fileName;
-			ContentType = contentType;
+            ContentType = contentType;
         }
     }
 }

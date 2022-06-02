@@ -1,30 +1,34 @@
-using System;
-using System.Collections.Generic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
+using System.Collections.Generic;
 
 namespace D7SMS.Standard.Utilities
 {
-    class ListDateTimeConverter : JsonConverter
+    internal class ListDateTimeConverter : JsonConverter
     {
         public ListDateTimeConverter()
         {
             Converter = new IsoDateTimeConverter();
         }
+
         public ListDateTimeConverter(Type Converter)
         {
             this.Converter = (JsonConverter)Activator.CreateInstance(Converter);
         }
-        public ListDateTimeConverter(Type Converter,string format)
+
+        public ListDateTimeConverter(Type Converter, string format)
         {
-            this.Converter = (JsonConverter)Activator.CreateInstance(Converter,format);
+            this.Converter = (JsonConverter)Activator.CreateInstance(Converter, format);
         }
+
         public JsonConverter Converter { get; set; }
+
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             serializer.Converters.Clear();
             serializer.Converters.Add(Converter);
-            serializer.Serialize(writer,value);
+            serializer.Serialize(writer, value);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

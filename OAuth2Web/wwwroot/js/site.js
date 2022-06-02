@@ -20,7 +20,7 @@
 }
 
 const ValidateEmail = (mail) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail) ? true : false;
-    
+
 const ValidatePassword = (password) => {
     if (password.length < 8) return false;
     if (password == password.toLowerCase()) return false;

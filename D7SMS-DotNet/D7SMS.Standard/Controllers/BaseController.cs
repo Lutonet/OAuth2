@@ -2,18 +2,18 @@
  * D7SMS.Standard
  *
  */
-using System;
-using D7SMS.Standard;
-using D7SMS.Standard.Utilities;
+
+using D7SMS.Standard.Exceptions;
 using D7SMS.Standard.Http.Client;
 using D7SMS.Standard.Http.Response;
-using D7SMS.Standard.Exceptions;
+using D7SMS.Standard.Utilities;
 
 namespace D7SMS.Standard.Controllers
 {
     public partial class BaseController
     {
         #region shared http client instance
+
         private static object syncObject = new object();
         private static IHttpClient clientInstance = null;
 
@@ -21,9 +21,9 @@ namespace D7SMS.Standard.Controllers
         {
             get
             {
-                lock(syncObject)
+                lock (syncObject)
                 {
-                    if(null == clientInstance)
+                    if (null == clientInstance)
                     {
                         clientInstance = new HTTPClient()
 ;
@@ -42,6 +42,7 @@ namespace D7SMS.Standard.Controllers
                 }
             }
         }
+
         #endregion shared http client instance
 
         internal ArrayDeserialization ArrayDeserializationFormat = ArrayDeserialization.Indexed;
@@ -58,4 +59,4 @@ namespace D7SMS.Standard.Controllers
                 throw new APIException(@"HTTP Response Not OK", _context);
         }
     }
-} 
+}

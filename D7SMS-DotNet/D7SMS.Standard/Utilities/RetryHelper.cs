@@ -10,6 +10,7 @@ namespace D7SMS.Standard.Utilities
         {
             await RetryOnExceptionAsync<Exception>(times, delay, operation).ConfigureAwait(false);
         }
+
         public static async Task RetryOnExceptionAsync<TException>(
             int times, TimeSpan delay, Func<Task> operation) where TException : Exception
         {

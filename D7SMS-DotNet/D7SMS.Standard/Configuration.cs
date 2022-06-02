@@ -1,10 +1,7 @@
-using D7SMS.Standard.Models;
 namespace D7SMS.Standard
 {
     public partial class Configuration
     {
-
-
         //The base Uri for API calls
         public static string BaseUri = "https://rest-api.d7networks.com/secure";
 
@@ -15,6 +12,5 @@ namespace D7SMS.Standard
         //API Token
         //TODO: Replace the APIPassword with an appropriate value
         public static string APIPassword = "";
-
     }
 }

@@ -1,7 +1,7 @@
-using System;
-using System.Globalization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using System;
+using System.Globalization;
 
 namespace D7SMS.Standard.Utilities
 {
@@ -40,7 +40,6 @@ namespace D7SMS.Standard.Utilities
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue,
             JsonSerializer serializer)
         {
-
             if (reader.TokenType != JsonToken.Integer)
             {
                 throw new JsonSerializationException("Unexpected token");

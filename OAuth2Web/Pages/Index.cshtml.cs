@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OAuth2DataAccess.DataAccess;
-using System.Threading.Tasks;
 
 namespace OAuth2Web.Pages
 {

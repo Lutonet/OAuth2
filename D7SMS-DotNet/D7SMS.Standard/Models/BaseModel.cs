@@ -3,15 +3,12 @@
  *
  */
 
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using Newtonsoft.Json;
+
 namespace D7SMS.Standard.Models
 {
     public class BaseModel : INotifyPropertyChanged
     {
-
         /// <summary>
         /// Property changed event for observer pattern
         /// </summary>

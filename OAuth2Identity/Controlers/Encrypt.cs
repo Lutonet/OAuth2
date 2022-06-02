@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using OAuth2Identity.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace OAuth2Identity.Controlers
 {

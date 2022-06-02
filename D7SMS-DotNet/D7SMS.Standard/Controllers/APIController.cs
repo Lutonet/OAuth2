@@ -2,30 +2,25 @@
  * D7SMS.Standard
  *
  */
-using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Converters;
-using D7SMS.Standard;
-using D7SMS.Standard.Utilities;
+
+using D7SMS.Standard.Exceptions;
+using D7SMS.Standard.Http.Client;
 using D7SMS.Standard.Http.Request;
 using D7SMS.Standard.Http.Response;
-using D7SMS.Standard.Http.Client;
-using D7SMS.Standard.Exceptions;
+using D7SMS.Standard.Utilities;
+using System.Collections.Generic;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace D7SMS.Standard.Controllers
 {
-    public partial class APIController: BaseController
+    public partial class APIController : BaseController
     {
         #region Singleton Pattern
 
         //private static variables for the singleton pattern
         private static object syncObject = new object();
+
         private static APIController instance = null;
 
         /// <summary>
@@ -71,22 +66,21 @@ namespace D7SMS.Standard.Controllers
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
             _queryBuilder.Append("/balance");
 
-
             //validate and preprocess url
             string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
 
             //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
+            var _headers = new Dictionary<string, string>()
             {
                 { "user-agent", "D7SDK 1.0" }
             };
 
             //prepare the API call request to fetch the response
-            HttpRequest _request = ClientInstance.Get(_queryUrl,_headers, Configuration.APIUsername, Configuration.APIPassword);
+            HttpRequest _request = ClientInstance.Get(_queryUrl, _headers, Configuration.APIUsername, Configuration.APIPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
+            HttpStringResponse _response = (HttpStringResponse)await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request, _response);
 
             //Error handling using HTTP status codes
             if (_response.StatusCode == 500)
@@ -94,7 +88,6 @@ namespace D7SMS.Standard.Controllers
 
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
-
         }
 
         /// <summary>
@@ -122,12 +115,11 @@ namespace D7SMS.Standard.Controllers
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
             _queryBuilder.Append("/send");
 
-
             //validate and preprocess url
             string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
 
             //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
+            var _headers = new Dictionary<string, string>()
             {
                 { "user-agent", "D7SDK 1.0" },
                 { "Content-Type", input.ContentType },
@@ -141,8 +133,8 @@ namespace D7SMS.Standard.Controllers
             HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.APIUsername, Configuration.APIPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
+            HttpStringResponse _response = (HttpStringResponse)await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request, _response);
 
             //Error handling using HTTP status codes
             if (_response.StatusCode == 500)
@@ -150,7 +142,6 @@ namespace D7SMS.Standard.Controllers
 
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
-
         }
 
         /// <summary>
@@ -182,12 +173,11 @@ namespace D7SMS.Standard.Controllers
             StringBuilder _queryBuilder = new StringBuilder(_baseUri);
             _queryBuilder.Append("/sendbatch");
 
-
             //validate and preprocess url
             string _queryUrl = APIHelper.CleanUrl(_queryBuilder);
 
             //append request with appropriate headers and parameters
-            var _headers = new Dictionary<string,string>()
+            var _headers = new Dictionary<string, string>()
             {
                 { "user-agent", "D7SDK 1.0" },
                 { "Content-Type", contentType },
@@ -201,12 +191,10 @@ namespace D7SMS.Standard.Controllers
             HttpRequest _request = ClientInstance.PostBody(_queryUrl, _headers, _body, Configuration.APIUsername, Configuration.APIPassword);
 
             //invoke request and get response
-            HttpStringResponse _response = (HttpStringResponse) await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
-            HttpContext _context = new HttpContext(_request,_response);
+            HttpStringResponse _response = (HttpStringResponse)await ClientInstance.ExecuteAsStringAsync(_request).ConfigureAwait(false);
+            HttpContext _context = new HttpContext(_request, _response);
             //handle errors defined at the API level
             base.ValidateResponse(_response, _context);
-
         }
-
     }
-} 
+}

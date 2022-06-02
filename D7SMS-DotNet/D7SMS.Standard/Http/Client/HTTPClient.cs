@@ -1,14 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using D7SMS.Standard.Http.Request;
 using D7SMS.Standard.Http.Response;
 using D7SMS.Standard.Utilities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace D7SMS.Standard.Http.Client
 {
@@ -16,7 +15,6 @@ namespace D7SMS.Standard.Http.Client
     {
         public static IHttpClient SharedClient { get; set; }
         private readonly HttpClient _client = new HttpClient();
-		
 
         static HTTPClient()
         {
@@ -27,7 +25,6 @@ namespace D7SMS.Standard.Http.Client
         {
             _client.Timeout = timeout;
         }
-
 
         #region Execute methods
 
@@ -84,12 +81,12 @@ namespace D7SMS.Standard.Http.Client
             return response;
         }
 
-        #endregion
-
+        #endregion Execute methods
 
         #region Http request and response events
 
         public event OnBeforeHttpRequestEventHandler OnBeforeHttpRequestEvent;
+
         public event OnAfterHttpResponseEventHandler OnAfterHttpResponseEvent;
 
         private void RaiseOnBeforeHttpRequestEvent(HttpRequest request)
@@ -104,8 +101,7 @@ namespace D7SMS.Standard.Http.Client
                 OnAfterHttpResponseEvent(this, response);
         }
 
-        #endregion
-
+        #endregion Http request and response events
 
         #region Http methods
 
@@ -183,7 +179,7 @@ namespace D7SMS.Standard.Http.Client
             return new HttpRequest(HttpMethod.Delete, queryUrl, headers, body, username, password);
         }
 
-        #endregion
+        #endregion Http methods
 
         #region Helper methods
 
@@ -198,7 +194,6 @@ namespace D7SMS.Standard.Http.Client
             {
                 requestMessage.Headers.TryAddWithoutValidation(headers.Key, headers.Value);
             }
-
 
             if (!string.IsNullOrEmpty(request.Username))
             {
@@ -231,7 +226,8 @@ namespace D7SMS.Standard.Http.Client
                         try
                         {
                             requestMessage.Content.Headers.ContentType = MediaTypeHeaderValue.Parse(request.Headers["content-type"]);
-                        } catch(Exception)
+                        }
+                        catch (Exception)
                         {
                             requestMessage.Content.Headers.TryAddWithoutValidation("content-type", request.Headers["content-type"]);
                         }
@@ -294,6 +290,6 @@ namespace D7SMS.Standard.Http.Client
             return headers;
         }
 
-        #endregion
+        #endregion Helper methods
     }
 }
