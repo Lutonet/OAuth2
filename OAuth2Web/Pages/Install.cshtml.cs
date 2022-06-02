@@ -27,9 +27,9 @@ namespace OAuth2Web.Pages
             string password = Request.Form["password"];
             if (await _userService.CheckEmail(email) || _userService.CheckPassword(password))
             {
+                Console.WriteLine("All good");
                 return Page();
             }
-            Console.WriteLine("All good");
             return Page();
         }
 
