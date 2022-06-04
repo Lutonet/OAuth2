@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Localization;
 using OAuth2DataAccess.DataAccess;
+using OAuth2Identity.Models;
 using OAuth2Identity.Services;
 
 namespace OAuth2Web.Pages
@@ -28,9 +29,11 @@ namespace OAuth2Web.Pages
             if (await _userService.CheckEmail(email) || _userService.CheckPassword(password))
             {
                 Console.WriteLine("All good");
-                await _userService.CreateServerAdmin(email, password);
-                return Page();
+                Response result = await _userService.CreateServerAdmin(email, password);
+                if (result.Successfull)
+                    return RedirectToPage("Index");
             }
+
             return Page();
         }
 

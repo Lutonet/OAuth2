@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace OAuth2DataAccess.Models
 {
-    public class ServerAdminRegistrationModel
+    public class ServerAdminModel
     {
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; } = false;
-        public bool PasswordConfirmed { get; set; } = true;
         public string PasswordHash { get; set; }
+        public string PasswordSalt { get; set; }
         public string FirstName { get; set; } = "Server";
         public string LastName { get; set; } = "Administrator";
         public string PublicName { get; set; } = "Lord of the server";
@@ -19,6 +19,8 @@ namespace OAuth2DataAccess.Models
 
         // Application Table
         public string Name { get; set; } = "Authenticator";
+
+        public string ApplicationKey { get; set; }
 
         public string Description { get; set; } = "Authenticator application";
         public bool IsActive { get; set; } = true;

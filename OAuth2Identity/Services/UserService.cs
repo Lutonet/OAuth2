@@ -1,6 +1,9 @@
 ﻿using OAuth2DataAccess.DataAccess;
 using OAuth2DataAccess.Models;
+using OAuth2Identity.Helpers;
 using OAuth2Identity.Models;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace OAuth2Identity.Services
@@ -20,11 +23,27 @@ namespace OAuth2Identity.Services
             _checks = checks;
         }
 
-        public async Task CreateServerAdmin(string email, string password)
+        public async Task<Response> CreateServerAdmin(string email, string password)
         {
             if (!await _checks.NeedsInstall())
-                return;
+                return new Response() { Successfull = false, Message = "Installed" };
             else Console.WriteLine("All OK installing server administrator");
+            if (!await CheckEmail(email)) return new Response() { Successfull = false, Message = "Email" };
+            if (!CheckPassword(password)) return new Response() { Successfull = false, Message = "Password" };
+
+            // all checked, we can run the stored procedure and pray
+
+            PassObject pass = HashPassword(password);
+            string applicationKey = Tools.GenerateRandomString(128);
+            try
+            {
+                await _user.RegisterServerAdmin(email, pass.HashedPassword, pass.Salt, applicationKey);
+                return new Response();
+            }
+            catch (Exception ex)
+            {
+                return new Response() { Successfull = false, Message = ex.Message };
+            }
         }
 
         public async Task<string> GetUserEmailById(string Id)
@@ -91,6 +110,21 @@ namespace OAuth2Identity.Services
             }
 
             return true;
+        }
+
+        private PassObject HashPassword(string password)
+        {
+            string salt = Tools.GenerateRandomString(16);
+            using SHA256 sha = SHA256.Create();
+            var asBytes = Encoding.Default.GetBytes($"{password}{salt}");
+            var hash = sha.ComputeHash(asBytes);
+            return new PassObject { HashedPassword = Convert.ToBase64String(hash), Salt = salt };
+        }
+
+        private class PassObject
+        {
+            public string HashedPassword { get; set; }
+            public string Salt { get; set; }
         }
     }
 }

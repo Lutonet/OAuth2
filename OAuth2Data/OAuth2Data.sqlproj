@@ -86,6 +86,7 @@
     <Build Include="dbo\Stored Procedures\spUser_Exists.sql" />
     <Build Include="dbo\Stored Procedures\spUser_EmailIsUnique.sql" />
     <Build Include="dbo\Stored Procedures\SpUserRolesUserRolesApplication_FirstRun.sql" />
+    <Build Include="dbo\Stored Procedures\spUser_GetPasswordHash.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OAuth2Data.refactorlog" />

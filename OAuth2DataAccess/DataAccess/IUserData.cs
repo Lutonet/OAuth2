@@ -9,5 +9,7 @@ namespace OAuth2DataAccess.DataAccess
         Task<IEnumerable<UserModel>> GetUsers();
 
         Task<bool> IsEmailUnique(string email);
+
+        Task RegisterServerAdmin(string Email, string HashedPassword, string Salt, string ApplicationKey);
     }
 }

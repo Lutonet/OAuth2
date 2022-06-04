@@ -4,6 +4,7 @@
     [Email] NVARCHAR(128) NOT NULL, 
     [EmailConfirmed] BIT NOT NULL DEFAULT 0, 
     [PasswordHash] NVARCHAR(256) NOT NULL, 
+    [PasswordSalt] NVARCHAR(256) NOT NULL,
     [PhoneNumber] NVARCHAR(24) NULL, 
     [PhoneNumberConfirmed] BIT NOT NULL DEFAULT 0, 
     [TwoFactorEnabled] BIT NOT NULL DEFAULT 0, 

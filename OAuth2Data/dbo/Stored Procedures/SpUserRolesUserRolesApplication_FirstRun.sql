@@ -1,7 +1,10 @@
 ﻿CREATE PROCEDURE [dbo].[SpUserRolesUserRolesApplication_FirstRun]
+  @UserId NVARCHAR(128) = NEWID,
+  @ApplicationId NVARCHAR(128) = NEWID,
   @Email NVARCHAR(128),
   @EmailConfirmed BIT = 1,
   @PasswordHash NVARCHAR(256),
+  @PasswordSalt NVARCHAR(256),
   @LockoutEnabled BIT = 0,
   @FirstName NVARCHAR (128),
   @LastName NVARCHAR (128),
@@ -21,9 +24,11 @@ BEGIN
             -- Create the user record
             
             INSERT INTO Users (
+            Id,
             Email, 
             EmailConfirmed, 
             PasswordHash,
+            PasswordSalt,
             LockoutEnabled,
             FirstName,
             LastName,
@@ -31,22 +36,22 @@ BEGIN
             IsDeveloper)
             
             VALUES (
+            @UserId,
             @Email, 
             @EmailConfirmed, 
-            @PasswordHash, 
+            @PasswordHash,
+            @PasswordSalt,
             @LockoutEnabled,
             @FirstName, 
             @LastName, 
             @PublicName, 
             @IsDeveloper)
 
-            DECLARE @UserId NVARCHAR(128) = SCOPE_IDENTITY();
-            
+                       
             -- create the application record
-            INSERT INTO Applications(UserId, [Name], [Description], IsActive)
-            VALUES(@UserId, @Name, @Description, @IsActive)
+            INSERT INTO Applications(Id, UserId, [Name], [Description], IsActive)
+            VALUES(@ApplicationId, @UserId, @Name, @Description, @IsActive)
 
-            DECLARE @ApplicationId NVARCHAR(128) = SCOPE_IDENTITY();
 
             -- create the roles record 
             DECLARE @role1 NVARCHAR(128) = N'User'
@@ -56,20 +61,25 @@ BEGIN
             -- insert roles to the table 
             INSERT INTO Roles (Name, ApplicationId)
             VALUES (@role1, @ApplicationId);
-            DECLARE @role1Id int = SCOPE_IDENTITY();
+            DECLARE @role1Id int
+            SET @role1Id = SCOPE_IDENTITY();
             -- add new role to the user
-            INSERT INTO [dbo].[UsersRoles] (UserId, RoleId) VALUES (@UserId, @role1Id)
+            INSERT INTO [dbo].[UsersRoles] (UserId, RoleId) 
+            VALUES (@UserId, @role1Id)
 
 
             INSERT INTO Roles (Name, ApplicationId)
             VALUES (@role2, @ApplicationId);
-            DECLARE @role2Id int = SCOPE_IDENTITY();
+            DECLARE @role2Id int
+            SET @role2Id = SCOPE_IDENTITY();
             -- add new role to the user
-            INSERT INTO UsersRoles (UserId, RoleId) VALUES (@UserId, @role2Id)
+            INSERT INTO UsersRoles (UserId, RoleId) 
+            VALUES (@UserId, @role2Id)
 
             INSERT INTO Roles (Name, ApplicationId)
             VALUES (@role3, @ApplicationId)
-            DECLARE @role3Id int = SCOPE_IDENTITY();
+            DECLARE @role3Id int
+            SET @role3Id = SCOPE_IDENTITY();
             -- add new role to the user
             INSERT INTO UsersRoles (UserId, RoleId) VALUES (@UserId, @role3Id)
 
