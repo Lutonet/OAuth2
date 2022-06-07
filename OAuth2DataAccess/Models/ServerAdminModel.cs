@@ -8,6 +8,7 @@ namespace OAuth2DataAccess.Models
 {
     public class ServerAdminModel
     {
+        public string UserId { get; set; } = Guid.NewGuid().ToString();
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; } = false;
         public string PasswordHash { get; set; }
@@ -18,6 +19,8 @@ namespace OAuth2DataAccess.Models
         public bool IsDeveloper { get; set; } = true;
 
         // Application Table
+        public string ApplicationId { get; set; } = Guid.NewGuid().ToString();
+
         public string Name { get; set; } = "Authenticator";
 
         public string ApplicationKey { get; set; }

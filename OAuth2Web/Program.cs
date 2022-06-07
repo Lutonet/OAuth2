@@ -45,9 +45,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddSingleton<ISQLDataAccess, SQLDataAccess>();
 builder.Services.AddTransient<IUserHelpers, UserHelpers>();
 builder.Services.AddSingleton<IUserData, UserData>();
-
 builder.Services.AddTransient<IUserService, UserService>();
-
 builder.Services.AddTransient<IChecksData, ChecksData>();
 builder.Services.AddTransient<IPasswordTools, PasswordTools>();
 builder.Services.AddTransient<IEncrypt, Encrypt>();

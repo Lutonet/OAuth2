@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[SpUserRolesUserRolesApplication_FirstRun]
-  @UserId NVARCHAR(128) = NEWID,
-  @ApplicationId NVARCHAR(128) = NEWID,
+  @UserId NVARCHAR(128),
+  @ApplicationId NVARCHAR(128),
   @Email NVARCHAR(128),
   @EmailConfirmed BIT = 1,
   @PasswordHash NVARCHAR(256),
@@ -81,7 +81,8 @@ BEGIN
             DECLARE @role3Id int
             SET @role3Id = SCOPE_IDENTITY();
             -- add new role to the user
-            INSERT INTO UsersRoles (UserId, RoleId) VALUES (@UserId, @role3Id)
+            INSERT INTO UsersRoles (UserId, RoleId) 
+            VALUES (@UserId, @role3Id)
 
             COMMIT TRANSACTION
 

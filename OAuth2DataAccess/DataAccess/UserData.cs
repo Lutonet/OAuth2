@@ -34,12 +34,29 @@ namespace OAuth2DataAccess.DataAccess
         public async Task RegisterServerAdmin(string Email, string HashedPassword, string Salt, string ApplicationKey)
         {
             ServerAdminModel model = new ServerAdminModel();
+
             model.Email = Email;
             model.PasswordHash = HashedPassword;
             model.PasswordSalt = Salt;
             model.ApplicationKey = ApplicationKey;
 
             await _db.SaveData<ServerAdminModel>("dbo.SpUserRolesUserRolesApplication_FirstRun", model);
+        }
+
+        public async Task<bool> RegisterUser(RegisterUserModel newUser)
+        {
+            // store user to the DB
+            try
+            {
+                await _db.SaveData<RegisterUserModel>("dbo.spUser_Insert", newUser);
+                // check if some confirmation is needed and do it
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
         }
     }
 }
