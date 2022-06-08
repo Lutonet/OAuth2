@@ -49,6 +49,7 @@ builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IChecksData, ChecksData>();
 builder.Services.AddTransient<IPasswordTools, PasswordTools>();
 builder.Services.AddTransient<IEncrypt, Encrypt>();
+builder.Services.AddTransient<IApplicationData, ApplicationData>();
 
 var app = builder.Build();
 

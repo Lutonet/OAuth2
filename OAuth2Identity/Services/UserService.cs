@@ -11,14 +11,16 @@ namespace OAuth2Identity.Services
     public class UserService : IUserService
     {
         private IUserData _user;
+        private IApplicationData _application;
         private IdentityConfiguration _configuration;
         private IChecksData _checks;
 
-        public UserService(IUserData user,
+        public UserService(IUserData user, IApplicationData application,
             IdentityConfiguration configuration,
             IChecksData checks)
         {
             _user = user;
+            _application = application;
             _configuration=configuration;
             _checks = checks;
         }
@@ -30,8 +32,6 @@ namespace OAuth2Identity.Services
             else Console.WriteLine("All OK installing server administrator");
             if (!await CheckEmail(email)) return new Response() { Successfull = false, Message = "Email" };
             if (!CheckPassword(password)) return new Response() { Successfull = false, Message = "Password" };
-
-            // all checked, we can run the stored procedure and pray
 
             PassObject pass = HashPassword(password);
             string applicationKey = Tools.GenerateRandomString(128);
@@ -49,7 +49,21 @@ namespace OAuth2Identity.Services
                 newUser.DateOfBirth = DateTime.UtcNow;
                 await _user.RegisterUser(newUser);
                 // create application
-
+                ApplicationModel newApplication = new();
+                newApplication.Id = Guid.NewGuid().ToString();
+                newApplication.UserId = newUser.Id;
+                newApplication.ApplicationKey = applicationKey;
+                newApplication.Name = "Authenticator";
+                newApplication.Description = "Authenticator Application";
+                newApplication.AgeFrom = 3;
+                newApplication.PrivacyUrl= "/Privacy";
+                newApplication.HomeUrl="/";
+                newApplication.UserHasAgeLimits = false;
+                newApplication.LogoUrl="/logo.png";
+                newApplication.ReturnUrl = "/";
+                newApplication.TermsUrl = "/terms";
+                newApplication.DateCreated = DateTime.UtcNow;
+                await _application.CreateApplication(newApplication);
                 // assign roles
                 // log admin in
 
