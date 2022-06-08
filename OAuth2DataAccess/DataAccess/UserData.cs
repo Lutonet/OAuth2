@@ -31,18 +31,6 @@ namespace OAuth2DataAccess.DataAccess
             return true;
         }
 
-        public async Task RegisterServerAdmin(string Email, string HashedPassword, string Salt, string ApplicationKey)
-        {
-            ServerAdminModel model = new ServerAdminModel();
-
-            model.Email = Email;
-            model.PasswordHash = HashedPassword;
-            model.PasswordSalt = Salt;
-            model.ApplicationKey = ApplicationKey;
-
-            await _db.SaveData<ServerAdminModel>("dbo.SpUserRolesUserRolesApplication_FirstRun", model);
-        }
-
         public async Task<bool> RegisterUser(RegisterUserModel newUser)
         {
             // store user to the DB

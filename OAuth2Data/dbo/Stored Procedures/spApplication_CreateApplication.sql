@@ -7,6 +7,8 @@
   @HomeUrl NVARCHAR(256),
   @LogoUrl NVARCHAR(256),
   @PrivacyUrl NVARCHAR(256),
+  @ReturnUrl NVARCHAR(256),
+  @TermsUrl NVARCHAR(256),
   @AgeFrom INT,
   @UserHasAgeLimit BIT
 AS
@@ -21,6 +23,8 @@ BEGIN
            ,[HomeUrl]
            ,[LogoUrl]
            ,[PrivacyUrl]
+           ,[ReturnUrl]
+           ,[TermsUrl]
            ,[AgeFrom]
            ,[UserHasAgeLimit])
      VALUES
@@ -32,6 +36,8 @@ BEGIN
            ,@HomeUrl
            ,@LogoUrl
            ,@PrivacyUrl
+           ,@ReturnUrl
+           ,@TermsUrl
            ,@AgeFrom
            ,@UserHasAgeLimit)
 END

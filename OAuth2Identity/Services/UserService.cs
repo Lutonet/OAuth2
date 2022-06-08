@@ -37,7 +37,22 @@ namespace OAuth2Identity.Services
             string applicationKey = Tools.GenerateRandomString(128);
             try
             {
-                await _user.RegisterServerAdmin(email, pass.HashedPassword, pass.Salt, applicationKey);
+                // register user
+                RegisterUserModel newUser = new();
+                newUser.Id = Guid.NewGuid().ToString();
+                newUser.Email = email;
+                newUser.PasswordHash = pass.HashedPassword;
+                newUser.PasswordSalt = pass.Salt;
+                newUser.FirstName = "Server";
+                newUser.LastName = "Admin";
+                newUser.PublicName = "Lord of the server";
+                newUser.DateOfBirth = DateTime.UtcNow;
+                await _user.RegisterUser(newUser);
+                // create application
+
+                // assign roles
+                // log admin in
+
                 return new Response();
             }
             catch (Exception ex)

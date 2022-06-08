@@ -10,6 +10,6 @@ namespace OAuth2DataAccess.DataAccess
 
         Task<bool> IsEmailUnique(string email);
 
-        Task RegisterServerAdmin(string Email, string HashedPassword, string Salt, string ApplicationKey);
+        Task<bool> RegisterUser(RegisterUserModel newUser);
     }
 }
