@@ -7,8 +7,8 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string ApplicationKey { get; set; }
-        public DateTime DateCreated { get; set; }
-        public DateTime LockedUntil { get; set; }
+        public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+        public DateTime LockedUntil { get; set; } = DateTime.UtcNow;
         public string HomeUrl { get; set; }
         public string LogoUrl { get; set; }
         public string PrivacyUrl { get; set; }
@@ -17,6 +17,6 @@
         public bool IsActive { get; set; }
         public bool IsLocked { get; set; }
         public int AgeFrom { get; set; }
-        public bool UserHasAgeLimits { get; set; }
+        public bool UserHasAgeLimit { get; set; }
     }
 }

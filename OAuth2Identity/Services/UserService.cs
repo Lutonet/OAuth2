@@ -55,14 +55,16 @@ namespace OAuth2Identity.Services
                 newApplication.ApplicationKey = applicationKey;
                 newApplication.Name = "Authenticator";
                 newApplication.Description = "Authenticator Application";
+                newApplication.DateCreated = DateTime.UtcNow;
+                newApplication.LockedUntil = DateTime.UtcNow;
                 newApplication.AgeFrom = 3;
                 newApplication.PrivacyUrl= "/Privacy";
                 newApplication.HomeUrl="/";
-                newApplication.UserHasAgeLimits = false;
                 newApplication.LogoUrl="/logo.png";
                 newApplication.ReturnUrl = "/";
                 newApplication.TermsUrl = "/terms";
-                newApplication.DateCreated = DateTime.UtcNow;
+                newApplication.UserHasAgeLimit = false;
+
                 await _application.CreateApplication(newApplication);
                 // assign roles
                 // log admin in
