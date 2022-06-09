@@ -14,15 +14,18 @@ namespace OAuth2Identity.Services
         private IApplicationData _application;
         private IdentityConfiguration _configuration;
         private IChecksData _checks;
+        private IRoleData _role;
 
         public UserService(IUserData user, IApplicationData application,
             IdentityConfiguration configuration,
+            IRoleData role,
             IChecksData checks)
         {
             _user = user;
             _application = application;
             _configuration=configuration;
             _checks = checks;
+            _role = role;
         }
 
         public async Task<Response> CreateServerAdmin(string email, string password)
@@ -64,9 +67,9 @@ namespace OAuth2Identity.Services
                 newApplication.ReturnUrl = "/";
                 newApplication.TermsUrl = "/terms";
                 newApplication.UserHasAgeLimit = false;
-
                 await _application.CreateApplication(newApplication);
                 // assign roles
+                await _role.AddAdminDefaultRoles(newApplication.Id, newUser.Id);
                 // log admin in
 
                 return new Response();

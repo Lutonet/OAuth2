@@ -90,6 +90,7 @@
     <Build Include="dbo\Stored Procedures\spApplication_CreateApplication.sql" />
     <Build Include="dbo\Stored Procedures\spRoleCreate.sql" />
     <Build Include="dbo\Stored Procedures\spUserRoles_AddUserToRole.sql" />
+    <Build Include="dbo\Stored Procedures\spRolesUsers_AddUserRole.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OAuth2Data.refactorlog" />
