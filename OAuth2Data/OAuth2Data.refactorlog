@@ -28,4 +28,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="UserId" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="b5eb9d61-f98b-488f-9c88-068321ce26fd" ChangeDateTime="06/10/2022 22:53:20">
+    <Property Name="ElementName" Value="[dbo].[UserTokens].[LoginProvider]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserTokens]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ApplicationId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="90516c0a-b4fa-4703-bbbd-4de00182eb46" ChangeDateTime="06/10/2022 22:53:41">
+    <Property Name="ElementName" Value="[dbo].[UserTokens].[Name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserTokens]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Token" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5591f320-1705-490d-9226-36960b1e9c4b" ChangeDateTime="06/10/2022 22:56:06">
+    <Property Name="ElementName" Value="[dbo].[UserTokens].[IsuedTime]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[UserTokens]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Issued" />
+  </Operation>
 </Operations>

@@ -4,6 +4,9 @@ namespace OAuth2Web.Models
 {
     public class RegisterModel
     {
+        [Required]
+        public string ApplicationId { get; set; }
+
         [EmailAddress]
         [Required]
         public string Email { get; set; }

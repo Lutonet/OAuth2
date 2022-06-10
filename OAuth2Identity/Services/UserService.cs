@@ -37,7 +37,7 @@ namespace OAuth2Identity.Services
             if (!CheckPassword(password)) return new Response() { Successfull = false, Message = "Password" };
 
             PassObject pass = HashPassword(password);
-            string applicationKey = Tools.GenerateRandomString(128);
+            string applicationKey = Tools.GenerateKey();
             try
             {
                 // register user

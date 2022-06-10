@@ -2,6 +2,8 @@
   @Email VARCHAR(128)
 AS
 BEGIN
-  SELECT PasswordHash FROM Users WHERE Email = @Email
+  SELECT PasswordHash, PasswordSalt 
+  FROM Users 
+  WHERE Email = @Email
 END
 

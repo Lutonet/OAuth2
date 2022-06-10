@@ -1,13 +1,13 @@
 ﻿namespace OAuth2Identity.Helpers
 {
-    internal static class Tools
+    public static class Tools
     {
         public static string GenerateRandomString(int size = 8)
         {
             Random res = new Random();
 
             // String of alphabets
-            String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ)01234567890";
+            String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
             // Initializing the empty string
             String ran = "";
@@ -24,9 +24,16 @@
             return ran;
         }
 
-        public static string GenerateKey => GenerateRandomString(32);
-        public static string GenerateRecoveryCode => GenerateRandomString(6);
+        public static string GenerateKey()
+        {
+            return GenerateRandomString(32);
+        }
 
-        public static string[] DefaultRoles = { "User", "Administrator", "Server Administrator" };
+        public static string GenerateRecoveryCode()
+        {
+            return GenerateRandomString(6);
+        }
+
+        public static string[] DefaultRoles = { "User", "Administrator" };
     }
 }
