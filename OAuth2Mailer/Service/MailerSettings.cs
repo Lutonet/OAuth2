@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OAuth2Mailer.Service
 {
-    public class MailerSettings
+    public class MailerSettings : IMailerSettings
     {
         private string path = Path.Combine(Directory.GetCurrentDirectory(), "mailer.json");
 

@@ -22,10 +22,11 @@ namespace OAuth2Web.Api.Help
         public IActionResult OnGet(string topic)
         {
             HelperModel helper = _helper.GetHelp(topic);
+            if (helper == null) return NotFound("Topic not found");
             HelperModel result = new();
             result.Header = _loc[helper.Header];
             result.BodyText = _loc[helper.BodyText];
-            result.Name = helper.Name;
+            result.Name =  helper.Name;
             return Ok(result);
         }
     }
