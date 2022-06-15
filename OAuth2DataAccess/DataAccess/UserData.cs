@@ -46,5 +46,24 @@ namespace OAuth2DataAccess.DataAccess
                 return false;
             }
         }
+
+        public async Task<LoginResponseModel>()
+        {
+            // store user to the DB
+         
+        }
+
+        public async Task<bool> CanLogin(string UserId, string ApplicationId)
+        {
+            return false;
+        }
+
+        private async Task<UserModel> GetUserData(string UserId)
+        {
+        }
+
+        private async Task<bool> CheckApplicationAccess(string UserId, string ApplicationId)
+        {
+        }
     }
 }

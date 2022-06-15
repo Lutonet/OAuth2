@@ -16,5 +16,10 @@ namespace OAuth2Identity.Services
         {
             return $"{userId} {applicationId}";
         }
+
+        public string GenerateRefreshToken()
+        {
+            return $"{Guid.NewGuid()}";
+        }
     }
 }

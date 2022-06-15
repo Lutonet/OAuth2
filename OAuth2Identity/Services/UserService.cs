@@ -80,7 +80,7 @@ namespace OAuth2Identity.Services
             }
         }
 
-        public async Task<string> GetUserEmailById(string Id)
+        private async Task<string> GetUserEmailById(string Id)
         {
             return null;
         }
@@ -101,6 +101,11 @@ namespace OAuth2Identity.Services
         }
 
         public async Task<UserPublicModel> Register(IdentityUser register)
+        {
+            return null;
+        }
+
+        public async Task<LoginResponse> Login(string email, string password)
         {
             return null;
         }
