@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OAuth2DataAccess.Models
 {
-    public class LoginModel
+    public class DataLoginModel
     {
         public string Email { get; set; }
         public string Password { get; set; }

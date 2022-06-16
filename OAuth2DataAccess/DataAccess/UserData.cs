@@ -34,6 +34,7 @@ namespace OAuth2DataAccess.DataAccess
         public async Task<bool> RegisterUser(RegisterUserModel newUser)
         {
             // store user to the DB
+            // todo - handle the application
             try
             {
                 await _db.SaveData<RegisterUserModel>("dbo.spUser_Insert", newUser);
@@ -47,10 +48,16 @@ namespace OAuth2DataAccess.DataAccess
             }
         }
 
-        public async Task<LoginResponseModel>()
+        public async Task<LoginResponseModel> Login(string UserId, string ApplicationId, string Password)
         {
+            UserModel user = await GetUserData(UserId);
+            if (user == null)
+                return new LoginResponseModel() { Success = false, Error="Not found" };
+            if (!await CanLogin(UserId, ApplicationId))
+                return new LoginResponseModel() { Success = false, Error="Not allowed" };
+
             // store user to the DB
-         
+            return new LoginResponseModel();
         }
 
         public async Task<bool> CanLogin(string UserId, string ApplicationId)
@@ -60,10 +67,12 @@ namespace OAuth2DataAccess.DataAccess
 
         private async Task<UserModel> GetUserData(string UserId)
         {
+            return new UserModel();
         }
 
         private async Task<bool> CheckApplicationAccess(string UserId, string ApplicationId)
         {
+            return false;
         }
     }
 }

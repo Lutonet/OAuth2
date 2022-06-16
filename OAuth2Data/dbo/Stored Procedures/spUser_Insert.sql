@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[spUser_Insert]
---  SELECT [Email], [EmailConfirmed], [PhoneNumber], [PhoneNumberConfirmed], [TwoFactorEnabled], [LockoutEnabled], [LockoutEndDateUtd], [AccessFailedCount], [FirstName], [LastName], [PublicName], [DateOfBirth], [IsDeveloper], [Facebook], [Twitter], [Microsoft], [WebPage], [Timestamp], [AccountCreated], [AccountLocked]
+
 @Id NVARCHAR(128),
 @Email NVARCHAR(128),
 @PasswordHash VARCHAR(256),

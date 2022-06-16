@@ -10,5 +10,6 @@ namespace OAuth2Identity.Models
     {
         public int TokenExpiresInMinutes { get; set; } = 60;
         public int RefreshTokenExpiresInDays { get; set; } = 30;
+        public string ThisApplicationName { get; set; } = "Authenticator";
     }
 }

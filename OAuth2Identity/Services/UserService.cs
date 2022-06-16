@@ -80,18 +80,21 @@ namespace OAuth2Identity.Services
             }
         }
 
-        private async Task<string> GetUserEmailById(string Id)
+        public async Task<string> GetUserEmailById(string Id)
         {
+            // returns user data without password details
             return null;
         }
 
         public async Task<string> GetUserId(string email)
         {
+            // returns user Id from the email
             return null;
         }
 
         public async Task<bool> IsLocked(string UserId)
         {
+            // checks if the account is locked
             return false;
         }
 
