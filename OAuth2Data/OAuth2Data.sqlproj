@@ -95,6 +95,8 @@
     <Build Include="dbo\Stored Procedures\spRefreshToken_Insert.sql" />
     <Build Include="dbo\Tables\ApplicationBans.sql" />
     <Build Include="dbo\Stored Procedures\spApplicationBans_CheckIfUserIsBanned.sql" />
+    <Build Include="dbo\Stored Procedures\spApplicationBan-CheckIfUserIsLocked.sql" />
+    <Build Include="dbo\Stored Procedures\spUser_GetAllUserData.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="OAuth2Data.refactorlog" />

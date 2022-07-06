@@ -6,5 +6,5 @@ BEGIN
   SELECT COUNT(*) 
   FROM [dbo].[ApplicationBans] 
   WHERE [UserId] = @UserId 
-      AND [ApplicationId] = @ApplicationId
+      AND [ApplicationId] = @ApplicationId AND [BannedUntil] > GETUTCDATE()
 END

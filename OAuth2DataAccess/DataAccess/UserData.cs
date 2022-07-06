@@ -50,7 +50,7 @@ namespace OAuth2DataAccess.DataAccess
 
         public async Task<LoginResponseModel> Login(string UserId, string ApplicationId, string Password)
         {
-            UserModel user = await GetUserData(UserId);
+            UserPublicModel user = await GetUserData(UserId);
             if (user == null)
                 return new LoginResponseModel() { Success = false, Error="Not found" };
             if (!await CanLogin(UserId, ApplicationId))
@@ -62,16 +62,31 @@ namespace OAuth2DataAccess.DataAccess
 
         public async Task<bool> CanLogin(string UserId, string ApplicationId)
         {
+            if (await CanUseToken(UserId, ApplicationId))
+            {
+                if (await _db.LoadSingleRecord<int, dynamic>("spApplicationBans_CheckIfUserIsLocked", new { UserId, ApplicationId }) > 0) return false;
+                return true;
+            }
             return false;
         }
 
-        private async Task<UserModel> GetUserData(string UserId)
+        private async Task<UserPublicModel> GetUserData(string UserId)
         {
-            return new UserModel();
+            return new UserPublicModel();
         }
 
         private async Task<bool> CheckApplicationAccess(string UserId, string ApplicationId)
         {
+            return false;
+        }
+
+        private async Task<bool> CanUseToken(string UserId, string ApplicationId)
+        {
+            if (await _db.LoadSingleRecord<int, dynamic>("spApplicationBan_CheckIfUserIsBanned", new { UserId, ApplicationId }) == 1)
+            {
+                return false;
+            }
+
             return false;
         }
     }

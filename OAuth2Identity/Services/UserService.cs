@@ -98,9 +98,8 @@ namespace OAuth2Identity.Services
             return false;
         }
 
-        public async Task<bool> IsBanned(string UserId)
+        public async Task<bool> IsBanned(string UserId, string ApplicationId)
         {
-            return false;
         }
 
         public async Task<UserPublicModel> Register(IdentityUser register)
@@ -163,7 +162,7 @@ namespace OAuth2Identity.Services
             return new PassObject { HashedPassword = Convert.ToBase64String(hash), Salt = salt };
         }
 
-        private class PassObject
+        public class PassObject
         {
             public string HashedPassword { get; set; }
             public string Salt { get; set; }
